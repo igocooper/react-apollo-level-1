@@ -4,10 +4,25 @@ import './App.css';
 // Apollo stuff 
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
+import gql from 'graphql-tag';
 
 const client = new ApolloClient({
   uri: 'https://api-euwest.graphcms.com/v1/cjko4kc4p1hek01dls0gy08i9/master'
 });
+
+const testQuery = gql`
+  {
+    posts {
+      title
+      id
+      body
+    }
+  }
+`
+
+client.query({
+  query: testQuery
+}).then(res => console.log(res));
 
 class App extends Component {
   render() {
