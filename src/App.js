@@ -11,7 +11,7 @@ const client = new ApolloClient({
 });
 
 const POSTS_QUERY = gql`
-  {
+  query allPosts {
     posts {
       title
       id
