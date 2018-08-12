@@ -1,17 +1,16 @@
-.App {
+/* .App {
+
+} */
+
+.App-header {
+  background-color: #524763;
+  padding: 20px;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.App-header a {
+  color: #fff;
+  text-decoration: none;
 }
 
 .App-title {
@@ -22,7 +21,47 @@
   font-size: large;
 }
 
+.button {
+  background: #524763;
+  color: #fff;
+  border-radius: 6px;
+  padding: 5px 10px;
+  text-decoration: none;
+  cursor: pointer;
+  outline-color: transparent;
+}
+
+main {
+  width: 90%;
+  margin: 1rem auto;
+}
+
+.posts-listings {
+  margin: 2rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.posts-listings li {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+input, textarea {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+input {
+  font-size: 1.6rem;
+}
+
+textarea {
+  font-size: 1.2rem;
+  height: 50vh;
 }

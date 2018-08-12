@@ -1,9 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class PostForm extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    post: PropTypes.object
+  }
+
+  static defaultProps = {
+    post: {}
+  }
+
   state = {
-    title: '',
-    body: ''
+    id: this.props.post.id || '',
+    title: this.props.post.title || '',
+    body: this.props.post.body || ''
   };
 
   handleInput = e => {
@@ -13,13 +24,14 @@ export default class PostForm extends Component {
   };
 
   render() {
-    const { createPost } = this.props;
-    const { title, body } = this.state;
+    const { onSubmit } = this.props;
+    const { title, body, id } = this.state;
     return (
       <form onSubmit={ (e) => {
         e.preventDefault();
-        createPost({
+        onSubmit({
           variables: {
+            id,
             title,
             body
           }
@@ -35,7 +47,7 @@ export default class PostForm extends Component {
       }}>
         <input type="text" name="title" placeholder="title" value={title} onChange={this.handleInput}/>
         <textarea name="body" placeholder="body" id="body" value={body} onChange={this.handleInput}></textarea>
-        <button>Submit</button>
+        <button className="button">Submit</button>
       </form>
     )
   }

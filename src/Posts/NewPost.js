@@ -11,7 +11,7 @@ export default class NewPost extends Component {
         { (createPost) => (
           <div>
             <h2>New Post</h2>
-            <PostForm createPost={createPost}/>
+            <PostForm onSubmit={createPost}/>
           </div>
         )
         }

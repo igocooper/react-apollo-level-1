@@ -25,17 +25,17 @@ class App extends Component {
         <Router>
         <div className="App">
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
             <Link to="/">
               <h1 className="App-title">Welcome to React Apollo 🚀</h1>
             </Link>
           </header>
-          <Link to="/post/new"> New Post ✏️</Link>
-          <Switch>
-            <Route exact path="/" component={Posts}/>
-            <Route exact path="/post/new" component={NewPost}/>
-            <Route path="/post/:id" component={Post}/>
-          </Switch>
+          <main>
+            <Switch>
+              <Route exact path="/" component={Posts}/>
+              <Route exact path="/post/new" component={NewPost}/>
+              <Route path="/post/:id" component={Post}/>
+            </Switch>
+          </main>
 
         </div>
         </Router>
