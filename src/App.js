@@ -7,14 +7,21 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
-
 // our components
 import Post from './Posts/Post';
 import NewPost from './Posts/NewPost';
 import Posts from './Posts/Posts';
 
+const defaultState = {
+  isEditMode: false
+}
+
 const client = new ApolloClient({
-  uri: 'https://api-euwest.graphcms.com/v1/cjko4kc4p1hek01dls0gy08i9/master'
+  uri: 'https://api-euwest.graphcms.com/v1/cjko4kc4p1hek01dls0gy08i9/master',
+  clientState: {
+    defaults: defaultState,
+    resolvers: {}
+  }
 });
 
 

@@ -10,17 +10,20 @@ export default class Post extends Component {
       <Query query={POST_QUERY} variables={{id}}>
         { ( {data, loading} ) => {
           if (loading) return  (<p>'Loading...'</p>)
-          const { post } = data;
+          const { post, isEditMode } = data;
 
           return (
             <div>
-              <section>
-                <h1>{post.title}</h1>
-              </section>
-              <section>
-                <h1>Edit Post</h1>
-                <UpdatePost post={post}/>
-              </section>
+              {isEditMode ? (
+                <section>
+                  <h1>Edit Post</h1>
+                  <UpdatePost post={post}/>
+                </section>
+              ) : (
+                <section>
+                  <h1>{post.title}</h1>
+                </section>
+              )} 
             </div> 
           )
         }
@@ -37,5 +40,6 @@ const POST_QUERY = gql`
       title
       body
     }
+    isEditMode @client
   }
 `;
