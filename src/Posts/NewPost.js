@@ -6,14 +6,20 @@ import PostForm from './PostForm';
 export default class NewPost extends Component {
 
   render() {
+    const { history } = this.props;
     return (
       <Mutation mutation={NEW_POST}>
-        { (createPost) => (
-          <div>
-            <h2>New Post</h2>
-            <PostForm onSubmit={createPost}/>
-          </div>
-        )
+        { (createPost, result) => {
+          const onSuccess = () => {
+            history.push("/");
+          };
+          return (
+            <div>
+              <h2>New Post</h2>
+              <PostForm onSuccess={onSuccess} onSubmit={createPost}/>
+            </div>
+          )
+        }
         }
       </Mutation>   
     )

@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 export default class PostForm extends Component {
   static propTypes = {
     onSubmit: PropTypes.func.isRequired,
+    onSuccess: PropTypes.func,
     post: PropTypes.object
   }
 
   static defaultProps = {
-    post: {}
+    post: {},
+    onSuccess: () => null
   }
 
   state = {
@@ -24,7 +26,7 @@ export default class PostForm extends Component {
   };
 
   render() {
-    const { onSubmit } = this.props;
+    const { onSubmit, onSuccess } = this.props;
     const { title, body, id } = this.state;
     return (
       <form onSubmit={ (e) => {
@@ -37,11 +39,9 @@ export default class PostForm extends Component {
           }
         })
           .then( () => {
-            // reset form if mutation is successfull
-            this.setState({
-              title: '',
-              body: ''
-            });
+            // toggle isEditMode  
+            onSuccess();
+
           })
           .catch( err => console.log(err))
       }}>
